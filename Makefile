@@ -1,0 +1,75 @@
+
+
+
+## - Used as example - https://github.com/oskarirauta/openwrt-rust/blob/main/utils/ripgrep/Makefile
+
+include $(TOPDIR)/rules.mk
+ 
+PKG_NAME:=dgminidsp-rs
+PKG_VERSION:=0.1.12
+PKG_RELEASE:=1
+ 
+PKG_BUILD_DIR:=$(BUILD_DIR)/dgminidsp-rs-$(PKG_VERSION)
+PKG_SOURCE:=v(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/mrene/minidsp-rs/archive/refs/tags/v0.1.12.tar.gz
+
+PKG_MAINTAINER:=James Jones <sirjaymz@gmail.com>
+PKG_LICENSE:=MIT
+PKG_LICENSE_FILES:=LICENSE
+
+
+PKG_BUILD_DEPENDS:=rust/host
+## PKG_BUILD_PARALLEL:=1
+
+
+include $(INCLUDE_DIR)/package.mk
+include ../../lang/rust/rust-package.mk
+
+define Package/dgminidsp-rs
+  SECTION:=utils
+  CATEGORY:=Utilities
+  TITLE:=minidsp-rs for minidsp WIDG device
+  DEPENDS:=$(RUST_ARCH_DEPENDS)
+  URL:=https://github.com/sirjaymz/dgminidsp-rs
+endef
+
+define Package/dgminidsp-rs/description
+  dgminidsp-rs is an openwrt package of minidsp-rs compiled explicitly for the minidsp WI-DG device
+  using mipsel for the Mediatek 7688 chipset
+endef
+
+define Build/Compile
+	$(call Build/Compile/Cargo,,)
+endef
+
+## Below is from mrene/minidsp-rs build instructions. need to mod above couple of lines to integrate
+## "cargo build --release --bin minidsp"
+## # The binary will then available as target/release/minidsp
+
+
+
+
+## define Package/dgminidsp-rs/conffiles
+## 	/etc/minidsp/config.toml
+## endef
+
+## define Package/dgminidsp-rs/install
+## 	$(INSTALL_DIR) $(1)/usr/bin
+## 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
+## 	$(INSTALL_DIR) $(1)/etc/minidsp
+## 	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
+## endef
+
+
+
+
+ifneq ($(CONFIG_USE_MUSL),)
+  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+endif
+
+$(eval $(call RustBinPackage,dgminidsp-rs))
+$(eval $(call BuildPackage,dgminidsp-rs))
+
+
+
+## End Makefile (minidsp-rs)
