@@ -1,7 +1,5 @@
-
-
-
-## - Used as example - https://github.com/oskarirauta/openwrt-rust/blob/main/utils/ripgrep/Makefile
+## MIT LICENSE
+## 
 
 include $(TOPDIR)/rules.mk
  
@@ -23,7 +21,23 @@ PKG_BUILD_DEPENDS:=rust/host
 
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/rust/rust-package.mk
+## include ../../lang/rust/rust-package.mk
+
+CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
+RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
+
+CONFIGURE_VARS += \
+        CARGO_HOME=$(CARGO_HOME) \
+        RUSTFLAGS=$(RUSTFLAGS)
+
+define Build/Compile
+        cd $(PKG_BUILD_DIR) && \
+          $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
+endef
+
+
+
+
 
 define Package/dgminidsp-rs
   SECTION:=utils
@@ -38,9 +52,9 @@ define Package/dgminidsp-rs/description
   using mipsel for the Mediatek 7688 chipset
 endef
 
-define Build/Compile
-	$(call Build/Compile/Cargo,,)
-endef
+## define Build/Compile
+## 	$(call Build/Compile/Cargo,,)
+## endef
 
 ## Below is from mrene/minidsp-rs build instructions. need to mod above couple of lines to integrate
 ## "cargo build --release --bin minidsp"
@@ -67,7 +81,7 @@ ifneq ($(CONFIG_USE_MUSL),)
   TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
 endif
 
-$(eval $(call RustBinPackage,dgminidsp-rs))
+## $(eval $(call RustBinPackage,dgminidsp-rs))
 $(eval $(call BuildPackage,dgminidsp-rs))
 
 
