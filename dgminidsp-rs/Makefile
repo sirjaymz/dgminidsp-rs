@@ -30,7 +30,7 @@ CONFIGURE_VARS += \
 
 define Build/Compile
         cd $(PKG_BUILD_DIR) && \
-          $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
+        $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
 endef
 
 define Package/dgminidsp-rs
@@ -42,8 +42,7 @@ define Package/dgminidsp-rs
 endef
 
 define Package/dgminidsp-rs/description
-  dgminidsp-rs is an openwrt package of minidsp-rs compiled explicitly for the minidsp WI-DG device
-  using mipsel for the Mediatek 7688 chipset
+  dgminidsp-rs is an openwrt package of minidsp-rs compiled explicitly for the minidsp WI-DG device using mipsel for the Mediatek 7688 chipset
 endef
 
 ## define Build/Compile
