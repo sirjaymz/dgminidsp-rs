@@ -61,12 +61,12 @@ endef
 ## 	/etc/minidsp/config.toml
 ## endef
 
-## define Package/dgminidsp-rs/install
-## 	$(INSTALL_DIR) $(1)/usr/bin
-## 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
-## 	$(INSTALL_DIR) $(1)/etc/minidsp
-## 	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
-## endef
+define Package/dgminidsp-rs/install
+	$(INSTALL_DIR) $(1)/usr/bin
+ 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
+ 	$(INSTALL_DIR) $(1)/etc/minidsp
+ 	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
+endef
 
 ## ifneq ($(CONFIG_USE_MUSL),)
 ##  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
