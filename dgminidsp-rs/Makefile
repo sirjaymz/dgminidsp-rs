@@ -74,7 +74,3 @@ endef
 
 $(eval $(call RustBinPackage,dgminidsp-rs))
 $(eval $(call BuildPackage,dgminidsp-rs))
-
-
-
-## End Makefile (minidsp-rs)
