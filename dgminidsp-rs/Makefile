@@ -22,11 +22,9 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 ## include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
-## CARGO_HOME:= $(STAGING_DIR_HOST)/.cargo
-
-## RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
-
-## CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
+CARGO_HOME:= $(STAGING_DIR_HOST)/.cargo
+RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
+CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
 
 
 ##  define Build/Compile
