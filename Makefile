@@ -21,7 +21,8 @@ PKG_BUILD_DEPENDS:=rust/host
 
 
 include $(INCLUDE_DIR)/package.mk
-## include ../../lang/rust/rust-package.mk
+include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
+## include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
 CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
 RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
@@ -34,10 +35,6 @@ define Build/Compile
         cd $(PKG_BUILD_DIR) && \
           $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
 endef
-
-
-
-
 
 define Package/dgminidsp-rs
   SECTION:=utils
