@@ -46,9 +46,9 @@ define Package/dgminidsp-rs/description
   dgminidsp-rs is an openwrt package of minidsp-rs compiled explicitly for the minidsp WI-DG device using mipsel for the Mediatek 7688 chipset
 endef
 
-## define Build/Compile
-## 	$(call Build/Compile/Cargo,,)
-## endef
+define Build/Compile
+  $(call Build/Compile/Cargo,,)
+endef
 
 ## Below is from mrene/minidsp-rs build instructions. need to mod above couple of lines to integrate
 ## "cargo build --release --bin minidsp"
@@ -72,5 +72,5 @@ endef
 ##  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
 ## endif
 
-$(eval $(call RustBinPackage,dgminidsp-rs))
+## $(eval $(call RustBinPackage,dgminidsp-rs))
 $(eval $(call BuildPackage,dgminidsp-rs))
