@@ -14,8 +14,7 @@ PKG_SOURCE_URL:=https://codeload.github.com/mrene/minidsp-rs/tar.gz/refs/tags/v0
 PKG_MAINTAINER:=James Jones <sirjaymz@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
-PKG_URL:=
-
+PKG_URL:=https://github.com/sirjaymz/dgminidsp-rs
 PKG_BUILD_DEPENDS:=rust/host
 ## PKG_BUILD_PARALLEL:=1
 
@@ -24,11 +23,11 @@ include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 ## include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
 CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
+
 RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
 
-CONFIGURE_VARS += \
-  CARGO_HOME=$(CARGO_HOME) \
-  RUSTFLAGS=$(RUSTFLAGS)
+CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
+
 
 define Build/Compile
   cd $(PKG_BUILD_DIR) && \
