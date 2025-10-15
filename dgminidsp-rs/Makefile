@@ -72,7 +72,7 @@ endef
 ##  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
 ## endif
 
-## $(eval $(call RustBinPackage,dgminidsp-rs))
+$(eval $(call RustBinPackage,dgminidsp-rs))
 $(eval $(call BuildPackage,dgminidsp-rs))
 
 
