@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 ## include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
-CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
+CARGO_HOME:= $(STAGING_DIR_HOST)/.cargo
 
 RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
 
@@ -58,15 +58,15 @@ endef
 
 
 ## define Package/dgminidsp-rs/conffiles
-## 	/etc/minidsp/config.toml
+## /etc/minidsp/config.toml
 ## endef
 
-define Package/dgminidsp-rs/install
-	$(INSTALL_DIR) $(1)/usr/bin
- 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
- 	$(INSTALL_DIR) $(1)/etc/minidsp
- 	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
-endef
+## define Package/dgminidsp-rs/install
+## 	$(INSTALL_DIR) $(1)/usr/bin
+##  	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
+##  	$(INSTALL_DIR) $(1)/etc/minidsp
+##  	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
+## endef
 
 ## ifneq ($(CONFIG_USE_MUSL),)
 ##  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
