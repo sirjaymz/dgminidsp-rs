@@ -1,7 +1,7 @@
 ## MIT LICENSE
 
 include $(TOPDIR)/rules.mk
- 
+
 PKG_NAME:=dgminidsp-rs
 PKG_VERSION:=0.1.12
 PKG_RELEASE:=1
@@ -25,12 +25,12 @@ CARGO_HOME := $(STAGING_DIR_HOST)/.cargo
 RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
 
 CONFIGURE_VARS += \
-        CARGO_HOME=$(CARGO_HOME) \
-        RUSTFLAGS=$(RUSTFLAGS)
+  CARGO_HOME=$(CARGO_HOME) \
+  RUSTFLAGS=$(RUSTFLAGS)
 
 define Build/Compile
-        cd $(PKG_BUILD_DIR) && \
-        $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
+  cd $(PKG_BUILD_DIR) && \
+  $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
 endef
 
 define Package/dgminidsp-rs
