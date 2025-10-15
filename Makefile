@@ -68,9 +68,9 @@ endef
 ## 	$(INSTALL_CONF) ./files/etc/minidsp/config.toml $(1)/etc/minidsp/
 ## endef
 
-ifneq ($(CONFIG_USE_MUSL),)
-  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
-endif
+## ifneq ($(CONFIG_USE_MUSL),)
+##  TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
+## endif
 
 ## $(eval $(call RustBinPackage,dgminidsp-rs))
 $(eval $(call BuildPackage,dgminidsp-rs))
