@@ -7,7 +7,7 @@ PKG_VERSION:=0.1.12
 PKG_RELEASE:=2
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/dgminidsp-rs-$(PKG_VERSION)-$(PKG_RELEASE)
-PKG_SOURCE:=minidsp-rs-(PKG_VERSION).tar.gz
+PKG_SOURCE:=minidsp-rs-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/mrene/minidsp-rs/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=2ab458800db532e3e3d28255ff58e6a6f3a985778970bc07ca172611b775dd18
 
