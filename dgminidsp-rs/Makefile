@@ -7,12 +7,16 @@ PKG_VERSION:=0.1.12
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/dgminidsp-rs-$(PKG_VERSION)
-PKG_SOURCE:=v(PKG_VERSION).tar.gz
+PKG_SOURCE:=minidsp-rs-(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/mrene/minidsp-rs/archive/refs/tags/$(PKG_SOURCE_VERSION).tar.gz
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 PKG_MAINTAINER:=James Jones <sirjaymz@gmail.com>
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
+
+minidsp-rs-0.1.12.tar.gz
+https://github.com/mrene/minidsp-rs/releases/download/v0.1.12/minidsp-0.1.12-1.tar.gz
+
 
 PKG_BUILD_DEPENDS:=rust/host
 ## PKG_BUILD_PARALLEL:=1
