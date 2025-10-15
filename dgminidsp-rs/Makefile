@@ -4,7 +4,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=dgminidsp-rs
 PKG_VERSION:=0.1.12
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/dgminidsp-rs-$(PKG_VERSION)-$(PKG_RELEASE)
 PKG_SOURCE:=minidsp-rs-$(PKG_VERSION).tar.gz
@@ -22,17 +22,17 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 ## include $(TOPDIR)/feeds/packages/lang/rust/rust-values.mk
 
-CARGO_HOME:= $(STAGING_DIR_HOST)/.cargo
+## CARGO_HOME:= $(STAGING_DIR_HOST)/.cargo
 
-RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
+## RUSTFLAGS="-C linker=$(TARGET_CC_NOCACHE) -C ar=$(TARGET_AR)"
 
-CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
+## CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
 
 
-define Build/Compile
-  cd $(PKG_BUILD_DIR) && \
-  $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
-endef
+##  define Build/Compile
+##   cd $(PKG_BUILD_DIR) && \
+##   $(CONFIGURE_VARS) cargo build --release --target=$(REAL_GNU_TARGET_NAME)
+## endef
 
 define Package/dgminidsp-rs
   SECTION:=utils
