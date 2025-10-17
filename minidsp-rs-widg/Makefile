@@ -35,12 +35,12 @@ CONFIGURE_VARS += CARGO_HOME=$(CARGO_HOME) RUSTFLAGS=$(RUSTFLAGS)
 define Package/minidsp-rs-widg
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE:=minidsp-rs for the Minidsp WIDG device
+  TITLE:=minidsp-rs-widg is the minidsp-rs program for the Minidsp WIDG device
   DEPENDS:=$(RUST_ARCH_DEPENDS)
   URL:=https://github.com/sirjaymz/minidsp-rs-widg
 endef
 
-define Package/dgminidsp-rs/description
+define Package/minidsp-rs-widi/description
   minidsp-rs-widg is an openwrt package of minidsp-rs compiled explicitly for the Minidsp WI-DG device using mipsel for the Mediatek 7688 chipset
 endef
 
